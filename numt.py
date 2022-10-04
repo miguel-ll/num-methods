@@ -29,6 +29,7 @@ def pdi_function(number, base: int = 10, p: int = 2):
         number = number // base
     return total
 
+# A happy number is a number which eventually reaches 1 when replaced by the sum of the square of each digit. For instance, 13 is a happy number because 1^2 + 3^2 = 10 and 1^2 + 0^2 = 1.
 # A happy base is a number base b where every number is b-happy. The only happy bases less than 5*10^8 are base 2 and base 4.
 # Unsolved problem: Are base 2 and base 4 the only bases that are happy?
 
