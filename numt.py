@@ -1,3 +1,5 @@
+from decimal import *
+
 # Check whether a number can be represented by sum of two squares using Fermat Theorem.
 def sum2sq(n):
     i = 2;
@@ -40,3 +42,16 @@ def is_happy(number: int) -> bool:
         seen_numbers.add(number)
         number = pdi_function(number)
     return number == 1
+
+# William Shanks bot. After which digit will the reciprocal of a prime number repeat?
+def shanks(num):
+    if num == 7:
+    	print("6")
+    	return
+    getcontext().prec = num+9
+    new_num = str(Decimal(1)/Decimal(num))
+    new_num = new_num[new_num.find('.'):]
+    new_num = new_num[1:]
+    firstfour = new_num[:9]
+    rest = new_num[9:]
+    print(rest.find(firstfour)+9)
