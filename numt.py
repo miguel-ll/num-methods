@@ -1,4 +1,5 @@
 from decimal import *
+import random
 
 # Check whether a number can be represented by sum of two squares using Fermat Theorem.
 def sum2sq(n):
