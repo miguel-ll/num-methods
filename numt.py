@@ -1,5 +1,5 @@
 # Check whether a number can be represented by sum of two squares using Fermat Theorem.
-def judgeSquareSum(n):
+def sum2sq(n):
     i = 2;
     while (i * i <= n):
         count = 0;
