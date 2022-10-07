@@ -55,3 +55,23 @@ def shanks(num):
     firstfour = new_num[:9]
     rest = new_num[9:]
     print(rest.find(firstfour)+9)
+    
+def approx_pi(INTERVAL):
+    circle_points = 0
+    square_points = 0
+
+    for _ in range(INTERVAL):
+        rand_x = random.uniform(-1, 1)
+        rand_y = random.uniform(-1, 1)
+
+        # Distance between (x, y) from the origin
+        origin_dist = rand_x**2 + rand_y**2
+
+        # Checking if (x, y) lies inside the circle
+        if origin_dist <= 1:
+            circle_points += 1
+        square_points += 1
+
+        # pi= 4*(no. of points generated inside the circle)/ (no. of points generated inside the square)
+        pi = 4 * circle_points / square_points
+    return pi
