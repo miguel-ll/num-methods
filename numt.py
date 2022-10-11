@@ -2,6 +2,8 @@ from decimal import *
 import random
 
 # Check whether a number can be represented by sum of two squares using Fermat Theorem.
+# An integer greater than one can be written as a sum of two squares if and only if 
+# its prime decomposition contains no factor pk, where prime p ≡ 3 ( mod 4 ) and k is odd.
 def sum2sq(n):
     i = 2;
     while (i * i <= n):
@@ -58,6 +60,7 @@ def shanks(num):
     rest = new_num[9:]
     print(rest.find(firstfour)+9)
     
+# Approximate the value of pi using the Monte Carlo method.
 def approx_pi(INTERVAL):
     circle_points = 0
     square_points = 0
