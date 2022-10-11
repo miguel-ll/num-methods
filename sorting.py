@@ -64,3 +64,74 @@ def heapSort(arr):
     for i in range(N-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         heapify(arr, i, 0)
+        
+def partition(arr,low,high):
+   i = ( low-1 )
+   pivot = arr[high] # pivot element
+   for j in range(low , high):
+      # If current element is smaller
+      if arr[j] <= pivot:
+         # increment
+         i = i+1
+         arr[i],arr[j] = arr[j],arr[i]
+   arr[i+1],arr[high] = arr[high],arr[i+1]
+   return ( i+1 )
+
+def quickSort(arr,low,high):
+   if low < high:
+      # index
+      pi = partition(arr,low,high)
+      # sort the partitions
+      quickSort(arr, low, pi-1)
+      quickSort(arr, pi+1, high)		
+
+def selectionSort(arr):
+	n = len(arr)
+	for j in range(n-1):
+		idxmin = j
+		for i in range(j+1,n):
+			if arr[i] < arr[idxmin]:
+				idxmin = i
+		if idxmin != j:
+			arr[j], arr[idxmin] = arr[idxmin], arr[j]
+	#print(arr)
+
+def bubbleSort(arr):
+	n = len(arr)
+	sorted = False
+	for j in range(n-1):
+	    for i in range(n-j-1):
+		    if arr[i] > arr[i+1]:
+			    arr[i], arr[i+1] = arr[i+1], arr[i]
+			    sorted = True
+	    if not sorted:
+	        return
+			    
+def shellSort(arr):
+    n = len(arr)
+    gap = n//2
+    # Do a gapped insertion sort for this gap size.
+    # The first gap elements a[0..gap-1] are already in gapped
+    # order keep adding one more element until the entire array
+    # is gap sorted
+    while gap > 0:
+        for i in range(gap,n):
+            # add a[i] to the elements that have been gap sorted
+            # save a[i] in temp and make a hole at position i
+            temp = arr[i]
+            # shift earlier gap-sorted elements up until the correct
+            # location for a[i] is found
+            j = i
+            while  j >= gap and arr[j-gap] >temp:
+                arr[j] = arr[j-gap]
+                j -= gap
+            # put temp (the original a[i]) in its correct location
+            arr[j] = temp
+        gap = gap//2
+			    
+arr = [9,2,7,5,4,3]
+
+shellSort(arr)
+print(arr)
+
+#quickSort(arr, 0, len(arr)-1)
