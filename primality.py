@@ -1,6 +1,6 @@
 from random import randint
 
-# https://en.wikipedia.org/wiki/Fermat_primality_test
+# Fermat primality test
 def fermat_test(n):
   for _ in range(100):
     a = randint(2,n-2)
