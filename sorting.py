@@ -1,3 +1,5 @@
+# Sorting algorithms.
+
 # for string sorting
 def countSort(arr):
     # The output character array that will have sorted arr
@@ -36,13 +38,11 @@ def heapify(arr, N, i):
     l = 2 * i + 1     # left = 2*i + 1
     r = 2 * i + 2     # right = 2*i + 2
  
-    # See if left child of root exists and is
-    # greater than root
+    # See if left child of root exists and is greater than root
     if l < N and arr[largest] < arr[l]:
         largest = l
  
-    # See if right child of root exists and is
-    # greater than root
+    # See if right child of root exists and is greater than root
     if r < N and arr[largest] < arr[r]:
         largest = r
  
@@ -94,7 +94,6 @@ def selectionSort(arr):
 				idxmin = i
 		if idxmin != j:
 			arr[j], arr[idxmin] = arr[idxmin], arr[j]
-	#print(arr)
 
 def bubbleSort(arr):
 	n = len(arr)
@@ -160,9 +159,7 @@ def mergeSort(arr):
             arr[k] = R[j]
             j += 1
             k += 1
+	
 #arr = [9,2,7,5,4,3]
-
-#shellSort(arr)
-#print(arr)
 
 #quickSort(arr, 0, len(arr)-1)
