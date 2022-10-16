@@ -1,3 +1,5 @@
+# Numerical methods for prime numbers.
+
 from random import randint
 
 # Fermat primality test
