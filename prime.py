@@ -114,5 +114,40 @@ def sieve_atkin(limit):
         if sieve[a]:
             print(a, end=" ")
 
+def fillPrimes(chprime, high):
+    ck = [True]*(high+1)
+    l = int(sqrt(high))
+    for i in range(2, l+1):
+        if ck[i]:
+            for j in range(i*i, l+1, i):
+                ck[j] = False
+    for k in range(2, l+1):
+        if ck[k]:
+            chprime.append(k)
+
+# print prime numbers from low to high
+def segsieve(low, high):
+    chprime = list()
+    fillPrimes(chprime, high)
+# chprimes has primes in range [2,sqrt(n)]
+# we take primes from 2 to sqrt[n] because the multiples of all primes below high are marked by these
+    prime = [True] * (high-low + 1)
+# here prime[0] indicates whether low is prime or not similarly prime[1] indicates whether low+1 is prime or not
+    for i in chprime:
+        lower = (low//i)
+# here lower means the first multiple of prime which is in range [low,high]
+# for eg: 3's first multiple in range [28,40] is 30
+        if lower <= 1:
+            lower = i+i
+        elif (low % i) != 0:
+            lower = (lower * i) + i
+        else:
+            lower = lower*i
+        for j in range(lower, high+1, i):
+            prime[j-low] = False
+    for k in range(low, high + 1):
+            if prime[k-low]:
+                print(k, end=" ")
+
 #limit = 30
 #sieveatkin(limit)
