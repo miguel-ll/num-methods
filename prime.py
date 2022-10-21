@@ -149,5 +149,19 @@ def segsieve(low, high):
             if prime[k-low]:
                 print(k, end=" ")
 
+## Generation of primes
+
+# Willans' formula. returns the zth prime number
+def willans(z):
+    for n in range(1, z+1):
+        res = 1
+    for i in range(1, 1+2**n):
+        c = 0
+        for j in range(1, 1+i):
+            f = (factorial(j-1)+1)/j;
+        c += floor(cos(f*pi)**2);
+        res += floor((n/c)**(1/n))
+    return res
+
 #limit = 30
 #sieveatkin(limit)
