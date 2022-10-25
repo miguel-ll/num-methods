@@ -178,5 +178,57 @@ def wilson(n):
 		return 2
 	return floor((factorial(n) % (n+1))/n) * (n-1)+2
 
+# Modified sieve of Eratosthenes function to generate all prime numbers less than N
+def m_sieve(N):
+    isprime = [True] * N
+    prime = []
+    SPF = [None] * N
+
+    # 0 and 1 are not prime
+    isprime[0] = isprime[1] = False
+
+    # Fill rest of the entries
+    for i in range(2, N):
+        if isprime[i] == True:
+            prime.append(i)
+            # A prime number is its own smallest prime factor
+            SPF[i] = i
+
+        # Remove all multiples of i*prime[j]
+        # by making is Prime[i * prime[j]] = false and put smallest prime factor of i*Prime[j]
+        # as prime[j] [ for exp :let i = 5 , j = 0 ,
+        # prime[j] = 2 [ i*prime[j] = 10 ]
+        # so smallest prime factor of '10' is '2'
+        j = 0
+        while (j < len(prime) and
+               i * prime[j] < N and
+                   prime[j] <= SPF[i]):
+
+            isprime[i * prime[j]] = False
+
+            # put smallest prime factor of i*prime[j]
+            SPF[i * prime[j]] = prime[j]
+            j += 1
+    return prime
+    
+# Sieve of Eratosthenes
+def er_sieve(num):
+    li = []
+    prime = [True for i in range(num+1)]
+    p = 2
+    while (p * p <= num):
+        if (prime[p] == True):
+            for i in range(p * p, num+1, p):
+                prime[i] = False
+        p += 1
+  
+    for p in range(2, num+1):
+        if prime[p]:
+            li.append(p)
+    return li
+  
+#num = 50
+#z = m_sieve(num)
+#print(z)
 #limit = 30
 #sieveatkin(limit)
