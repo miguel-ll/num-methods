@@ -1,6 +1,7 @@
 # Numerical methods for prime numbers.
 
 from random import randint
+from math import floor, factorial
 
 # Fermat primality test
 def fermat_test(n):
@@ -162,6 +163,20 @@ def willans(z):
         c += floor(cos(f*pi)**2);
         res += floor((n/c)**(1/n))
     return res
+
+# Check if a proth number is a proth prime.
+def prothprime(n):
+	for _ in range(10):
+		a = randint(2,n-1)
+		if (a**( (n-1)/2) + 1) % n == 0:
+			return True
+	return False
+	
+# Wilson's formula to generate prime numbers. Not too useful.
+def wilson(n):
+	if n<=0:
+		return 2
+	return floor((factorial(n) % (n+1))/n) * (n-1)+2
 
 #limit = 30
 #sieveatkin(limit)
