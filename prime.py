@@ -1,7 +1,7 @@
 # Numerical methods for prime numbers.
 
-from random import randint
-from math import floor, factorial
+from random import randint, shuffle
+from math import floor, factorial, sqrt
 
 # Fermat primality test
 def fermat_test(n):
@@ -226,7 +226,51 @@ def er_sieve(num):
         if prime[p]:
             li.append(p)
     return li
+
+# lucas test
+
+def primeFactors(n, factors):
+    if (n % 2 == 0):
+        factors.append(2)
+    while (n % 2 == 0):
+        n = n // 2
+    for i in range(3, int(sqrt(n)) + 1, 2):
+        if (n % i == 0):
+            factors.append(i)
+        while (n % i == 0):
+            n = n // i
+    if (n > 2):
+        factors.append(n)
+    return factors
+
+def power(n, r, q):
+    total = n
+    for i in range(1, r):
+        total = (total * n) % q
+    return total
+
+def lucasTest(n):
+    if (n % 2 == 0):
+        return "composite1"
+    factors = []
+
+    factors = primeFactors(n - 1, factors)
+    rand = [i + 2 for i in range(n - 3)]
+    shuffle(rand)
+    for i in range(n - 2):
+        a = rand[i]
+        if (power(a, n - 1, n) != 1):
+            return "composite"
+        flag = True
+        for k in range(len(factors)):
+            if (power(a, (n - 1) // factors[k], n) == 1):
+                flag = False
+                break
+        if (flag):
+            return "prime"
+    return "probably composite"
   
+#print(lucasTest(2**19 -1))
 #num = 50
 #z = m_sieve(num)
 #print(z)
